@@ -1,67 +1,119 @@
-const text = document.getElementById('text');
-const banner = document.querySelector('.banner');
-const title = document.querySelector('.title');
-const firstParagraph = document.querySelector('.first-paragraph');
-const secondParagraph = document.querySelector('.second-paragraph');
-const thirdParagraph = document.querySelector('.third-paragraph');
-const forthParagraph = document.querySelector('.forth-paragraph');
-const firstSubtitle = document.querySelector('.first-subtitle');
-const secondSubtitle = document.querySelector('.second-subtitle');
-const thirdSubtitle = document.querySelector('.third-subtitle');
+const mainImg = document.querySelector('.selected-image'); // Main Image
+const imagesDivParent = document.querySelector('.small-images'); // the div witch contains the small images
+const img1 = document.querySelector('.img1');
+const img2 = document.querySelector('.img2');
+const img3 = document.querySelector('.img3');
+const img4 = document.querySelector('.img4');
 
-let backgroundNumber = 1;
+const addToCartBtn = document.querySelector('.add-to-cart-btn'); // add to cart button
+const quantityInput = document.querySelector('.quantity-input'); // the qunatity input
+const minus = document.querySelector('.minus'); // minus button
+const plus = document.querySelector('.plus') // plus button
+const quantityDisplayedInCart = document.querySelector('.quantity-from-cart'); // the number of the items in the cart
+const totalToPay = document.querySelector('.total');
+const deleteButton = document.querySelector('.fa-trash');
+let firstUsed = 1;  // if the cart is empty firstUsed is true else false
+let numar;  // the number of snekers in the cart
 
-// The Castle name move upwards while scrolling down
-window.addEventListener('scroll', () => {
-    let value = window.scrollY;
 
-    console.log(value);
+// LIGHT BOX EFFECT
+const lightbox = document.createElement('div'); // create a div
+lightbox.id = 'lightbox';   // give it the ligthbox id
+document.body.appendChild(lightbox); // add the div into the body
 
-    text.style.marginBottom = value * 2 + `px`;
+mainImg.addEventListener('click', function() {
+    lightbox.classList.add('active');
+
+    const fullScreenImg = document.createElement('img');    // create another img
+    fullScreenImg.src = mainImg.src;    // the new img will be the same as the main img
+
+    while (lightbox.firstChild) {   // atata timp cand in lightbox e o imagine
+        lightbox.removeChild(lightbox.firstChild);  // sterge acea imagine
+    }
+
+    lightbox.appendChild(fullScreenImg);    // add the new img into the lightbox div
+});
+
+lightbox.addEventListener('click', function(object) {
+    if (object.target !== object.currentTarget) { // daca dam click pe ceva ce nu e lightbox 
+        return  // nu face nimic
+    }   
+    else {  // daca dai click pe lightbox atunci inchide lightboxul
+        lightbox.classList.remove('active');
+    }
+})
+
+// CHANGE THE MAIN IMAGE BASED ON THE IMAGE CLICKED
+
+document.querySelector('.img1').addEventListener('click', function(){
+    mainImg.src = '/images/image-product-1.jpg';
+    deleteCurrentImgClass();
+    img1.classList.add('current-img'); 
+});
+document.querySelector('.img2').addEventListener('click', function(){
+    mainImg.src = '/images/image-product-2.jpg';
+    deleteCurrentImgClass();
+    img2.classList.add('current-img'); 
+});
+document.querySelector('.img3').addEventListener('click', function(){
+    mainImg.src = '/images/image-product-3.jpg';
+    deleteCurrentImgClass();
+    img3.classList.add('current-img'); 
+});
+document.querySelector('.img4').addEventListener('click', function(){
+    mainImg.src = '/images/image-product-4.jpg';
+    deleteCurrentImgClass();
+    img4.classList.add('current-img'); 
 });
 
 
-text.addEventListener('click', changeBackground);
+// delete 'current-img' class
+function deleteCurrentImgClass() {
+   const smallImgByTagName = imagesDivParent.getElementsByTagName('img');  // select the small images by tagname, using their parent
+   for (let i = 0; i < smallImgByTagName.length; i++) {
+       if (smallImgByTagName[i].classList.contains('current-img')) {
+           smallImgByTagName[i].classList.remove('current-img');
+       }
+   }
+}
 
-function changeBackground() {
-    console.log('merge?');
-    backgroundNumber += 1;
 
-    if (backgroundNumber > 3)
-    backgroundNumber = 1;
+// CHAGE CART DETAILS
+addToCartBtn.addEventListener('click', function (){     // when add to cart button is pressed
+    if (quantityInput.value != 0) {
+        document.querySelector('.cart-items').style.display = 'block';  // display cart details
 
-    banner.style.background = `url('/img/background/${backgroundNumber}.jpg') no-repeat center center/cover`; 
+        changeTotalToPay ();
+    } 
+});
 
-    if (backgroundNumber == 1) {
-        text.textContent = 'Bran Castle';
-        title.textContent = 'Bran Castle';
-        firstParagraph.textContent = "Bran Castle (Romanian: Castelul Bran; German: Schloss Bran; Hungarian: Törcsvári kastély) is a castle in Bran, 25 kilometres (16 mi) southwest of Brașov. It is a national monument and landmark in Transylvania. The fortress is on the Transylvanian side of the historical border with Wallachia, on road DN73. Commonly known outside Transylvania as Dracula's Castle, it is often referred to as the home of the title character in Bram Stoker's Dracula.[citation needed] There is no evidence that Stoker knew anything about this castle, which has only tangential associations with Vlad the Impaler, voivode of Wallachia, the putative inspiration for Dracula.[citation needed] Stoker's description of Dracula's crumbling fictional castle also bears no resemblance to Bran Castle. The castle is now a museum dedicated to displaying art and furniture collected by Queen Marie.[1] Tourists can see the interior on their own or by a guided tour. At the bottom of the hill is a small open-air museum exhibiting traditional Romanian peasant structures (cottages, barns, water-driven machinery, etc.) from the Bran region.";
-        firstSubtitle.textContent = "History";
-        secondParagraph.textContent = "In 1212, the Teutonic Order built the wooden castle of Dietrichstein as a fortified position in the Burzenland at the entrance to a mountain pass through which traders had travelled for more than a millennium. This castle was destroyed by the Mongols in 1242.[citation needed] The original name of the castle, Dietrichstein or lapis Theoderici in Latin, lit. Dietrich's Stone, seems to have been derived from the Comthur (Commander) and regional Preceptor, frater Theodericus, mentioned in a 1212 document.[3] This Dietrich is the probable builder of the castle.[3] A 1509 document confirms that the Törzburg county had once belonged to Commander Dietrich of the Teutonic Order.";
-        secondSubtitle.textContent = "Vlad the Impaler and Castle Bran";
-        thirdParagraph.textContent = "Vlad III Dracula, better known as Vlad The Impaler, was ruler of Wallachia on and off from 1448 to 1476. Other than being colloquially known as the inspiration for Bram Stoker's titular character in the novel Dracula, Vlad III is known for committing brutal acts of war. In his reign he was under constant threat of attack from both Ottoman and Hungarian forces. During an infamous retreat from Ottoman forces, Vlad III had the bodies of his enemies and his citizens alike impaled on large spikes in the field surrounding his country. Not only did his fondness for impaling his victims earn him the nickname Vlad the Impaler, it also ensured his survival during the retreat, as the Ottoman forces returned home after seeing the grotesque scene Vlad III had prepared for them.";
-        thirdSubtitle.textContent = "Vlad the Impaler";
-        forthParagraph.textContent = "Though many myths have been connected to Vlad III in connection with the Dracula myth, most historians agree that Vlad III Dracula never set foot in Castle Bran. Castle Bran was neither a friendly place for Vlad III to visit, nor was it under his rule. The castle was linked to Vlad III for various reasons. The castle had long been one linked to his imprisonment after he was captured by the Hungarians in 1462. It was believed that he was imprisoned in Castle Bran, but historians now conclude that Vlad III was actually imprisoned in a fortress in Budapest. It is said by historians that Castle Bran was chosen to be the colloquial location of Vlad III's imprisonment as it is a more haunting and dramatic looking structure than other castles of the region. Historians and scholars alike have concluded that Vlad III likely never set foot in the castle. However, as there is a lack of written historical accounts from the region at that time, the idea cannot be completely discredited.";
-    } else if (backgroundNumber == 2) {
-        text.textContent = 'Peles Castle';
-        title.textContent = 'Peles Castle';
-        firstParagraph.textContent = "Peleș Castle (Romanian: Castelul Peleș pronounced [kasˈtelul ˈpeleʃ] (About this soundlisten)) is a Neo-Renaissance castle in the Carpathian Mountains, near Sinaia, in Prahova County, Romania, on an existing medieval route linking Transylvania and Wallachia, built between 1873 and 1914. Its inauguration was held in 1883. It was constructed for King Carol I.";
-        firstSubtitle.textContent = "History";
-        secondParagraph.textContent = "When King Carol I of Romania (1839–1914), under whose reign the country gained its independence, first visited the site of the future castle in 1866, he fell in love with the magnificent mountain scenery. In 1872, the Crown purchased 5 square kilometres (1.9 sq mi) of land near the Piatra Arsă River. The estate was named the Royal Estate of Sinaia. The King commissioned the construction of a royal hunting preserve and summer retreat on the property, and the foundation was laid for Peleș Castle on 22 August 1873. Several auxiliary buildings were built simultaneously with the castle: the guards' chambers, the Economat Building, the Foișor hunting lodge, the royal stables, and a power plant. Peleș became the world's first castle fully powered by locally produced electricity.The first three design plans submitted for Peleș were copies of other palaces in Western Europe, and King Carol I rejected them all as lacking originality and being too costly. German architect Johannes Schultz won the project by presenting a more original plan, something that appealed to the King's taste: a grand palatial alpine castle combining different features of classic European styles, mostly following Italian elegance and German aesthetics along Renaissance lines. Works were also led by architect Carol Benesch.[2] Later additions were made between 1893 and 1914 by the Czech architect Karel Liman, who designed the towers, including the main central tower, which is 66 metres (217 ft) in height. The Sipot Building, which served as Liman's headquarters during the construction, was built later on. Liman would supervise the building of the nearby Pelișor Castle (1889–1903, the future residence of King Ferdinand I and Queen Marie of Romania), as well as of King Ferdinand's villa in the Royal Sheepfold Meadow.";
-        secondSubtitle.textContent = "Description";
-        thirdParagraph.textContent = "By form and function, Peleș is a palace, but it is consistently called a castle. Its architectural style is a romantically inspired blend Neo-Renaissance and Gothic Revival similar to Neuschwanstein Castle in Bavaria. A Saxon influence can be observed in the interior courtyard facades, which have allegorical hand-painted murals and ornate fachwerk similar to that seen in northern European alpine architecture. Interior decoration is mostly Baroque influenced, with heavy carved woods and exquisite fabrics.        The collection of arms and armour has over 4,000 pieces. Peleș Castle in Sinaia Romania Peleș Castle has a 3,200-square-metre (34,000 sq ft) floor plan with over 170 rooms, many with dedicated themes from world cultures (in a similar fashion as other Romanian palaces, such as Cotroceni Palace). Themes vary by function (offices, libraries, armouries, art galleries) or by style (Florentine, Turkish, Moorish, French, Imperial); all the rooms are lavishly furnished and decorated to the slightest detail. There are 30 bathrooms. The establishment has collections of statues, paintings, furniture, arms and armor, gold, silver, stained glass, ivory, porcelain, tapestries and rugs. The collection of arms and armour has over 4,000 pieces, divided between Eastern and Western war pieces and ceremonial or hunting pieces, spreading over four centuries of history. Oriental rugs come from many sources: Bukhara, Mosul, Isparta, Saruk and Smirna. The porcelain is from Sèvres and Meissen; the leather is from Córdoba. The hand-painted stained glass vitralios, which are mostly Swiss. A towering statue of King Carol I by Raffaello Romanelli overlooks the main entrance. Many other statues are present on the seven Italian neo-Renaissance terrace gardens, mostly of Carrara marble executed by the Italian sculptor Romanelli. The gardens also host fountains, urns, stairways, guarding lions, marble paths and other decorative pieces.";
-        thirdSubtitle.textContent = "Present day";
-        forthParagraph.textContent = "Originally personal property of the Royal Family, Peleș Castle was nationalized when King Michael was forced to abdicate and into exile by the Communist government in 1947. In 1997 the castle was returned to the Royal Family in a long judicial case that was finally concluded in 2007. King Michael subsequently said the castle should continue to house the Peleș National Museum, as well as being occasionally used for public royal ceremonies. King Michael's heir Margareta, Custodian of the Romanian Crown occasionally uses the Castle for receptions, investitures and other public events.[5] On 10th May (Monarchy Day) 2016, the Royal Family hosted a large Reception, Garden Party & Concert at Peleș Castle to mark the 150th anniversary[6] of the Romanian Royal Dynasty, when Margareta's standard was flown on Peleș Castle - the first time since 1947 a Royal Standard had flown from the Castle. In August 2016 the body of Queen Anne Lay in State in the Hall of Honour[9] at Peleș Castle in a ceremony attended by the Presidents of Romania and Moldova, Prime Minister Dacian Cioloș and other national leaders.[10] This was followed on 13th December 2017 by King Michael Lying in State[11] in the same location in a similar, but larger, ceremony prior to his funeral in Bucharest and his burial in Curtea de Argeș.";
-    } else if (backgroundNumber == 3) {
-        text.textContent = 'Corvin Castle';
-        title.textContent = 'Corvin Castle';
-        firstParagraph.textContent = "Corvin Castle, also known as Hunyadi Castle or Hunedoara Castle (Romanian: Castelul Huniazilor or Castelul Corvinilor; Hungarian: Vajdahunyadi vár), is a Gothic-Renaissance castle in Hunedoara, Romania. It is one of the largest castles in Europe and is featured as one of the Seven Wonders of Romania.";
-        firstSubtitle.textContent = "History";
-        secondParagraph.textContent = "Corvin Castle was laid out in 1446, when construction began by order of Voivode of Transylvania John Hunyadi (Hungarian: Hunyadi János, Romanian: Iancu or Ioan de Hunedoara), who wanted to transform the former keep built by Charles I of Hungary. The castle was originally given to John Hunyadi's father, Voyk (Vajk), by Sigismund of Luxembourg, king of Hungary and Croatia, as severance in 1409.[4] It was also in 1446 that John Hunyadi was elected as the regent governor by the Diet. Built in a Renaissance-Gothic style and constructed over the site of an older fortification on a rock above the smaller Zlaști River, the castle is a large and imposing structure with tall towers, bastions, an inner courtyard, diversely coloured roofs, and myriad windows and balconies adorned with stone carvings. The castle also features a double wall for enhanced fortification and is flanked by both rectangular and circular towers, an architectural innovation for the period's Transylvanian architecture. Some of the towers (the Capistrano Tower, the Deserted Tower and the Drummers' Tower) were used as prisons. The Buzdugan Tower (a type of mace after which it was named) was solely built for defensive purposes and it had its exterior decorated with geometric motifs. The rectangular-shaped towers have large openings to accommodate larger weapons. The castle has three large areas: the Knight's Hall, the Diet Hall and the circular stairway. The halls are rectangular in shape and are decorated with marble. The Diet Hall was used for ceremonies or formal receptions whilst the Knight's Hall was used for feasts. In 1456, John Hunyadi died and work on the castle stagnated. Starting with 1458, new commissions were being undergone to construct the Matia Wing of the castle. In 1480, work was completely stopped on the castle and it was recognised as being one of the biggest and most impressive buildings in Eastern Europe. The 16th century did not bring any improvements to the castle, but during the 17th century new additions were made for aesthetic and military purposes. Aesthetically, the large new palace was built facing the town.";
-        secondSubtitle.textContent = "Description";
-        thirdParagraph.textContent = "As one of the most important properties of John Hunyadi, the castle was transformed during his reign. It became a sumptuous home, not only a strategically enforced point. With the passing of the years, the masters of the castle had modified its look, adding towers, halls and guest rooms. The gallery and the keep - the last defense tower (called Neboisa which means Don't be afraid in Serbo-Croatian language), which remained unchanged from John Hunyadi's time, and the Capistrano Tower (named after the saint, Franciscan friar from the Battle of Belgrade in 1456) are some of the most significant parts of the construction. Other significant parts of the building are the Knights Hall (a great reception hall), the Club Tower, the White bastion, which served as a food storage room, and the Diet Hall, on whose walls medallions are painted (among them there are portraits of Matei Basarab, rulers from Wallachia, and Vasile Lupu, ruler of Moldavia). In the wing of the castle called the Mantle, a painting can be seen which portrays the legend of the raven from which the name of the descendants of John Hunyadi, Corvinus came.";
-        thirdSubtitle.textContent = "Legacy";
-        forthParagraph.textContent = "Tourists are told that it was the place where Vlad the Impaler, Prince of Wallachia, was held prisoner by John Hunyadi, Hungary's military leader and regent during the King's minority.[6] Later, Vlad III entered a political alliance with John Hunyadi, although the latter was responsible for the execution of his father, Vlad II Dracul. Because of these links, the Hunedoara Castle is sometimes mentioned as a source of inspiration for Castle Dracula in Bram Stoker's 1897 horror novel Dracula. In fact, Stoker neither knew about Vlad's alliance with Hunyadi, nor about Hunyadi's castle. Instead, Stoker's own handwritten research notes confirm that the novelist imagined Castle Dracula to be situated on an empty top in the Transylvanian Călimani Mountains near the former border with Moldavia. In the castle yard, near the 15th-century chapel, there is a 30-metre deep (98 ft) well. According to the legend, this fountain was dug by 3 Turkish prisoners to whom liberty was promised if they reached water. After 15 years they completed the well, but their captors did not keep their promise. It is said that the inscription on a wall of the well means you have water, but not soul. Specialists, however, have translated the inscription as he who wrote this inscription is Hasan, who lives as slave of the giaours, in the fortress near the church.[citation needed] The final action sequence of the 2015 Bollywood movie Singh Is Bling starring Akshay Kumar was shot at the castle.";
+deleteButton.addEventListener('click', function(){   // when detele button is clicked
+    document.querySelector('.cart-items').style.display = 'none';  // hide the cart details
+    numar = 0;
+});
+
+minus.addEventListener('click', function(){     // when minus button is clicked another item is removed from the cart
+    quantityInput.value = (quantityInput.value) - 1;
+
+    if (quantityInput.value < 0) {
+        quantityInput.value = 0;
+    }
+});
+
+plus.addEventListener('click', function(){      // when plus button is clicked another item is added to the cart
+    quantityInput.value = parseInt(quantityInput.value) + 1;
+});
+
+function changeTotalToPay () {  // display the total price of items
+    if (firstUsed == 1) {
+        numar = parseInt(quantityInput.value);  // baga in 'numar' valoarea din input
+        quantityDisplayedInCart.innerHTML = numar;
+        firstUsed = 0;  // firstUsed devine fals
+    } else {
+        numar = numar + parseInt(quantityInput.value);  // la valoarea actuala adauga ce e in input
+        quantityDisplayedInCart.innerHTML = numar;
     }
     
+    
+    totalToPay.textContent = `$${quantityInput.value * 125.00}.00`;
 }

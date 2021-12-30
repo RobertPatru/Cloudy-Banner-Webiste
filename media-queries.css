@@ -1,0 +1,206 @@
+@media (min-width: 320px) and (max-width: 900px) and (min-height: 560px) and (max-height: 1000px)  {
+    .header-div-1,
+    .header-div-2,
+    .list-2,
+    .list-1,
+    .list-item,
+    #header,
+    img,
+    li  {
+        flex-direction: column;
+        text-align: center;
+        margin: 0%;
+        padding: 0%;
+    }
+
+    .list-item {
+       margin: 10px 0;
+    }
+
+    .list-item:hover {
+        padding: 10px;
+    }
+
+    i {
+        margin: 20px;
+    }
+
+    .cart {
+        margin-left: -10px;
+    }
+
+    #header {
+        margin-bottom: 350px;
+    }
+
+    .body-section {
+        border-top: 3px rgba(0, 0, 0, 0.4) solid;
+        flex-direction: column;
+        padding: 50px 0%;
+    }
+
+    .item-images {
+        width: 100%;
+    }
+
+    .selected-image {
+        width: 100%;
+    }
+
+    .small-images {
+        margin:auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .small-img {
+        margin: 10px 0;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+    }
+
+    /* Item Details */
+
+    .item-details {
+        padding: 0%;
+        margin: 50px 0;
+    }
+
+    .sneakers-title {
+        margin-top: 10px;
+    }
+
+    .sneakers-description {
+        margin: 20px 0;
+    }
+
+    /* Price Details */
+    .price-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .new-price {
+        font-size: 22px;
+    }
+
+    .disscount {
+        margin: 0 10px;
+    }
+
+    .old-price {
+        margin-left: 30px;
+    }
+
+    .add-to-cart-btn {
+        width: 135px;
+        height: 40px;
+        margin: 0;
+        margin-top: 10px;
+        margin-left: 5px;
+        padding: 0%;
+    }
+
+    .add-to-cart-btn i {
+        display: none;
+    }
+
+    
+
+    /* Inside Cart Details */
+    .cart2 {
+        top: 0;
+        left: -36vw;
+
+        width: 100vw;
+        height: 230px;
+        max-width: 400px;
+    }
+
+    .cart-item-list {
+        flex-direction: row;
+    }
+
+    .item-bought {
+        padding: 0%;
+        margin: 0%;
+    } 
+
+    .summary-container {
+        text-align: center;
+        padding: 0%;
+        margin: 0%;
+        font-size: 16px;
+    }
+}   
+
+/* Telefoane pe Landscape */
+@media (min-width: 500px) and (max-width: 1000px) and (orientation: landscape) {
+   .item-details {
+       padding: 0;
+   }
+
+   .body-section {
+       flex-direction: column;
+       margin: auto;
+   }
+
+   .item-images {
+       display: flex;
+       margin-bottom: 30px;
+   }
+
+   .small-images {
+       display: flex;
+       flex-direction: column;
+       height: 400px;
+       margin-left: 40px;
+   }
+
+   .small-img {
+       width: 90px;
+   }
+
+   .sneakers-title {
+       margin: 10px 0;
+   }
+
+   .price-container {
+       margin-bottom: 20px;
+   }
+
+   .cart2 {
+       z-index: 100;
+   }
+}
+
+/* Tablets Portrait */
+@media only screen and (min-width: 768px) and (min-height: 768px) {
+   .body-section {
+       padding-left: 0%;
+   }
+
+   .item-details {
+       padding: 0%;
+       margin-left: 50px;
+
+   }
+
+   .sneakers-title {
+       width: 220px;
+   }
+
+   .add-to-cart-btn {
+       margin-top: 30px;
+       margin-left: 0;
+   }
+}
+
+@media (min-width: 1800px) {
+    .body-section {         
+        padding: 50px 150px;
+        margin-top: 50px;
+    }
+}

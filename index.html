@@ -4,49 +4,90 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Snekers | Website</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800&family=Kumbh+Sans:wght@400;700&family=Oswald:wght@200;300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/media-queries.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 </head>
 <body>
-    <div class="banner">
-        <h2 id="text">Bran Castle</h2>
-        <div class="clouds">
-            <img src="/img/cloud1.png">
-            <img src="/img/cloud2.png">
-            <img src="/img/cloud3.png">
-            <img src="/img/cloud4.png">
-            <img src="/img/cloud5.png">
-            <img src="/img/cloud1.png">
-            <img src="/img/cloud2.png">
-            <img src="/img/cloud3.png">
-            <img src="/img/cloud4.png">
-            <img src="/img/cloud5.png">
-        </div>
-    </div>
-
-    <section>
-        <h2 class="title">Bran Castle</h2>
-        <p class="first-paragraph">Bran Castle (Romanian: Castelul Bran; German: Schloss Bran; Hungarian: Törcsvári kastély) is a castle in Bran, 25 kilometres (16 mi) southwest of Brașov. It is a national monument and landmark in Transylvania. The fortress is on the Transylvanian side of the historical border with Wallachia, on road DN73.
-
-        Commonly known outside Transylvania as Dracula's Castle, it is often referred to as the home of the title character in Bram Stoker's Dracula.[citation needed] There is no evidence that Stoker knew anything about this castle, which has only tangential associations with Vlad the Impaler, voivode of Wallachia, the putative inspiration for Dracula.[citation needed] Stoker's description of Dracula's crumbling fictional castle also bears no resemblance to Bran Castle.
+    <div class="container">
+        <header id="header">
+            <div class="header-div-1">
+                <a href="#"><img src="/images/logo.svg"  class="logo"></a> 
+                <ul class="list-1">
+                    <li class="list-item"><a href="#">Collections</a></li>
+                    <li class="list-item"><a href="#">Men</a></li>
+                    <li class="list-item"><a href="#">Women</a></li>
+                    <li class="list-item"><a href="#">About</a></li>
+                    <li class="list-item"><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="header-div-2">
+                <ul class="list-2">
+                    <li class="cart">
+                         <i class="fas fa-shopping-cart"></i>
+                         <div class="cart2">
+                             <h5 class="cart-title">Cart</h5>
+                             <div class="cart-items">
+                                 <ul class="cart-list">
+                                     <li class="cart-item-list">
+                                         <img src="/images/image-product-2-thumbnail.jpg">
+                                         
+                                         <div class="priceXquantity-container">
+                                            <p class="item-bought">Fall Limited Edition Sneakers</p>
+                                            <div class="summary-container">
+                                                <p class="price">$125.00</p>
+                                                <span> x </span>
+                                                <p class="quantity-from-cart"></p>
+                                                <p class="total"></p>
+                                            </div>
+                                             
+                                         </div>
+                                         <i class="fas fa-trash"></i>
+                                     </li>
+                                     <button class="check-out-btn">Checkout</button>
+                                 </ul>
+                             </div>
+                         </div>
+                     </li>
+                    <li><img src="/images/image-avatar.png" class="avatar-picture" ></li>                    
+                </ul>
+            </div>       
+        </header>
         
-        The castle is now a museum dedicated to displaying art and furniture collected by Queen Marie.[1] Tourists can see the interior on their own or by a guided tour. At the bottom of the hill is a small open-air museum exhibiting traditional Romanian peasant structures (cottages, barns, water-driven machinery, etc.) from the Bran region.</p>
-
-        <h2 class="first-subtitle">History</h2>
-        <p class="second-paragraph">In 1212, the Teutonic Order built the wooden castle of Dietrichstein as a fortified position in the Burzenland at the entrance to a mountain pass through which traders had travelled for more than a millennium. This castle was destroyed by the Mongols in 1242.[citation needed]
-
-        The original name of the castle, Dietrichstein or lapis Theoderici in Latin, lit. "Dietrich's Stone", seems to have been derived from the Comthur (Commander) and regional Preceptor, frater Theodericus, mentioned in a 1212 document.[3] This Dietrich is the probable builder of the castle.[3] A 1509 document confirms that the Törzburg county had once belonged to Commander Dietrich of the Teutonic Order.</p>
-
-        <h2 class="second-subtitle">Vlad the Impaler and Castle Bran</h2>
-        <p class="third-paragraph">Vlad III Dracula, better known as Vlad The Impaler, was ruler of Wallachia on and off from 1448 to 1476. Other than being colloquially known as the inspiration for Bram Stoker's titular character in the novel Dracula, Vlad III is known for committing brutal acts of war. In his reign he was under constant threat of attack from both Ottoman and Hungarian forces. During an infamous retreat from Ottoman forces, Vlad III had the bodies of his enemies and his citizens alike impaled on large spikes in the field surrounding his country. Not only did his fondness for impaling his victims earn him the nickname "Vlad the Impaler", it also ensured his survival during the retreat, as the Ottoman forces returned home after seeing the grotesque scene Vlad III had prepared for them.</p>
-
-        <h2 class="third-subtitle">Vlad the Impaler</h2>
-        <p class="forth-paragraph">Though many myths have been connected to Vlad III in connection with the Dracula myth, most historians agree that Vlad III Dracula never set foot in Castle Bran. Castle Bran was neither a friendly place for Vlad III to visit, nor was it under his rule.
-
-            The castle was linked to Vlad III for various reasons. The castle had long been one linked to his imprisonment after he was captured by the Hungarians in 1462. It was believed that he was imprisoned in Castle Bran, but historians now conclude that Vlad III was actually imprisoned in a fortress in Budapest. It is said by historians that Castle Bran was chosen to be the colloquial location of Vlad III's imprisonment as it is a more haunting and dramatic looking structure than other castles of the region. Historians and scholars alike have concluded that Vlad III likely never set foot in the castle. However, as there is a lack of written historical accounts from the region at that time, the idea cannot be completely discredited.</p>
-    </section>
+        <section class="body-section">
+            <div class="item-images">
+                <img src="/images/image-product-1.jpg" class="selected-image">
+                <div class="small-images">
+                    <img src="/images/image-product-1-thumbnail.jpg" class="small-img img1 current-img">
+                    <img src="/images/image-product-2-thumbnail.jpg" class="small-img img2">
+                    <img src="/images/image-product-3-thumbnail.jpg" class="small-img img3">
+                    <img src="/images/image-product-4-thumbnail.jpg" class="small-img img4">
+                </div>
+            </div>
+            <div class="item-details">
+                <h5 class="sneaker-company orange">sneaker company</h5>
+                <h1 class="sneakers-title">Fall Limited Sneakers</h1>
+                <p class="sneakers-description gray">These low-profile sneakers are your perfect
+                    casual wear companion. Featuring a durable rubber outer sole, they'll
+                    withstand everything the weather can offer.
+                </p>
+                <div class="price-container">
+                    <p class="new-price">$125.00 <span class="disscount orange"> 50%</span></p>
+                    <p class="old-price gray">$250.00</p>
+                </div>
+                <div class="quantity-container">
+                    <button class="minus orange"> - </button>
+                    <input class="quantity-input" type="number" value="1"></input>
+                    <button class="plus orange"> + </button>
+                    <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i>Add to cart</button>
+                </div>
+            </div>
+        </section>
+    </div>
+    
 
     <script src="/app.js"></script>
 </body>
