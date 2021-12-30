@@ -1,0 +1,129 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+.banner {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('/img/background/3.jpg') no-repeat center center/cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: 1s linear;
+}
+
+#text {
+    position: relative;
+    font-size: 7em;
+    color: #fff;
+    outline: 3px black solid;
+    padding: 10px;
+    /* pointer-events: none; */
+    cursor: pointer;
+}
+
+.clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    /* nu-ti mai arata manuta cand faci hover */
+    pointer-events: none;
+}
+
+
+.banner .clouds img {
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+    max-width: 100%;
+    height: 50%;
+    animation: movingClouds calc(3s * var(--i)) linear infinite;
+}
+
+.banner .clouds img:nth-child(1) {
+    --i: 1;
+}
+.banner .clouds img:nth-child(2) {
+    --i: 2;
+}
+.banner .clouds img:nth-child(3) {
+    --i: 3;
+}
+.banner .clouds img:nth-child(4) {
+    --i: 4;
+}
+.banner .clouds img:nth-child(5) {
+    --i: 5;
+}
+.banner .clouds img:nth-child(6) {
+    --i: 10;
+}
+.banner .clouds img:nth-child(7) {
+    --i: 9;
+}
+.banner .clouds img:nth-child(8) {
+    --i: 8;
+}
+.banner .clouds img:nth-child(9) {
+    --i: 7;
+}
+.banner .clouds img:nth-child(10) {
+    --i: 6;
+}
+
+@keyframes movingClouds {
+    0% {
+        opacity: 0;
+        transform: scale(1); 
+    }
+    25%, 75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2); 
+    }
+}
+
+section {
+    padding: 100px;
+}
+
+section h2 {
+    font-size: 2.5em;
+    margin: 20px 0;
+}
+
+p {
+    margin-bottom: 50px;
+}
+
+P:last-child {
+    margin: 0%;
+}
+
+/* trasnition nu merge deoarece se schimb intregul content din html prin js :/  */
+/* .title,
+.first-paragraph,
+.first-subtitle,
+.second-paragraph,
+.second-subtitle,
+.third-paragraph,
+.third-subtitle,
+.forth-paragraph {
+    transition: 1s linear;
+} */

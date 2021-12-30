@@ -1,0 +1,15 @@
+@media (max-width: 500px) {
+    #text {
+        font-size: 50px;
+    }
+    
+    section {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 800px) and (orientation: landscape) {
+    #text {
+        font-size: 80px;
+    }
+}
